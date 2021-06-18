@@ -56,7 +56,7 @@ namespace BlogAPI.Repositories
         public async Task UpdatePostAsync(Post post, string userId)
         {
             postRepository.Update(post);
-            await AddEventLogAsync(EventType.Created, userId, post);
+            await AddEventLogAsync(EventType.Updated, userId, post);
         }
 
         private async Task AddEventLogAsync(EventType type, string userId, Post post)

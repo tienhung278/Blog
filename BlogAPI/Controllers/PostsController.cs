@@ -1,4 +1,6 @@
-﻿using BlogAPI.Contracts;
+﻿using AutoMapper;
+using BlogAPI.Contracts;
+using BlogAPI.DTOs;
 using BlogAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,24 +17,26 @@ namespace BlogAPI.Controllers
     public class PostsController : ControllerBase
     {
         private readonly IRepositoryWrapper repository;
+        private readonly IMapper mapper;
 
-        public PostsController(IRepositoryWrapper repository)
+        public PostsController(IRepositoryWrapper repository, IMapper mapper)
         {
             this.repository = repository;
+            this.mapper = mapper;
         }
 
         // GET: api/<PostsController>/titles
         [HttpGet("/titles")]
         public IActionResult GetPostTitles()
         {
-            return Ok(repository.GetPostTitles());
+            return Ok(mapper.Map<ICollection<string>>(repository.GetPostTitles()));
         }
 
         // GET: api/<PostsController>
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(repository.GetPosts());
+            return Ok(mapper.Map<ICollection<PostRead>>(repository.GetPosts()));
         }
 
         // GET api/<PostsController>/5
@@ -44,26 +48,28 @@ namespace BlogAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(post);
+            return Ok(mapper.Map<PostRead>(post));
         }
 
         // POST api/<PostsController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Post post)
+        public async Task<IActionResult> Post([FromBody] PostWrite postWrite)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
+            var post = mapper.Map<Post>(postWrite);
+            post.CreatedAt = DateTime.Now;
             string userId = HttpContext.User.Identity.Name;
             await repository.CreatePostAsync(post, userId);
             await repository.SaveAsync();
-            return CreatedAtRoute(new { id = post.Id }, post);
+            return CreatedAtRoute(new { id = post.Id }, mapper.Map<PostRead>(post));
         }
 
         // PUT api/<PostsController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Post post)
+        public async Task<IActionResult> Put(int id, [FromBody] PostWrite postWrite)
         {
             var p = repository.GetPost(id);
             if (p == null)
@@ -73,6 +79,8 @@ namespace BlogAPI.Controllers
             {
                 return BadRequest();
             }
+            var post = mapper.Map<Post>(postWrite);
+            post.Id = id;
             string userId = HttpContext.User.Identity.Name;
             await repository.UpdatePostAsync(post, userId);
             await repository.SaveAsync();
