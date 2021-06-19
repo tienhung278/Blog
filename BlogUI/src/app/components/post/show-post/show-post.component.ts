@@ -13,6 +13,7 @@ import { PostComponent } from '../post.component';
 export class ShowPostComponent implements OnInit {
   post: Post = {};
   titleId: number = 0;
+  searchText: string = "";
 
   constructor(private route: ActivatedRoute,
      private services: PostService,
@@ -30,15 +31,15 @@ export class ShowPostComponent implements OnInit {
    })
   }
 
-  getList() {
+  getList(): void {
     this.router.navigateByUrl("/");
   }
 
-  showEditForm() {
+  showEditForm(): void {
     this.router.navigateByUrl("/edit/" + this.post.id);
   }
 
-  deletePost() {
+  deletePost(): void {
     this.services.deletePost(this.titleId).subscribe(() => {
       this.getList();
     });

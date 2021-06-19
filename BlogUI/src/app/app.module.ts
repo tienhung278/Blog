@@ -12,6 +12,7 @@ import { ShowTitleComponent } from './components/post/show-title/show-title.comp
 import { ShowPostComponent } from './components/post/show-post/show-post.component';
 import { AddPostComponent } from './components/post/add-post/add-post.component';
 import { EditPostComponent } from './components/post/edit-post/edit-post.component';
+import { HighlightsearchPipe } from './pipes/highlightsearch.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EditPostComponent } from './components/post/edit-post/edit-post.compone
     ShowTitleComponent,
     ShowPostComponent,
     AddPostComponent,
-    EditPostComponent
+    EditPostComponent,
+    HighlightsearchPipe
   ],
   imports: [
     BrowserModule,
