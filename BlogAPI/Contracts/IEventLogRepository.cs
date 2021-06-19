@@ -8,7 +8,7 @@ namespace BlogAPI.Contracts
 {
     public interface IEventLogRepository : IRepositoryBase<EventLog>
     {
-        ICollection<EventLog> GetAllEventLogs();
+        ICollection<EventLog> GetAllEventLogs(QueryParameter parameter);
         EventLog GetEventLogById(int id);
     }
 }

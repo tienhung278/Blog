@@ -8,8 +8,8 @@ namespace BlogAPI.Contracts
 {
     public interface IRepositoryWrapper
     {
-        ICollection<Post> GetPosts();
-        ICollection<Title> GetTitles();
+        ICollection<Post> GetPosts(QueryParameter parameter);
+        ICollection<Title> GetTitles(QueryParameter parameter);
         Post GetPost(int id);
         Task CreatePostAsync(Post post, string userId);
         Task UpdatePostAsync(Post post, string userId);

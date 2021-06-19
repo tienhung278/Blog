@@ -1,4 +1,5 @@
 ﻿using BlogAPI.Contracts;
+using BlogAPI.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,12 @@ namespace BlogAPI.Repositories
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expresstion)
         {
             return table.Where(expresstion).AsNoTracking();
+        }
+
+        public IQueryable<T> GetItemsByPage(IQueryable<T> collection, QueryParameter parameter)
+        {
+            return collection.Skip((parameter.PageNumber - 1) * parameter.PageSize)
+                .Take(parameter.PageSize);
         }
 
         public void Update(T entity)

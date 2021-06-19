@@ -27,16 +27,16 @@ namespace BlogAPI.Controllers
 
         // GET: api/<PostsController>/titles
         [HttpGet("/titles")]
-        public IActionResult GetPostTitles()
+        public IActionResult GetPostTitles([FromQuery] QueryParameter parameter)
         {
-            return Ok(repository.GetTitles());
+            return Ok(repository.GetTitles(parameter));
         }
 
         // GET: api/<PostsController>
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] QueryParameter parameter)
         {
-            return Ok(mapper.Map<ICollection<PostRead>>(repository.GetPosts()));
+            return Ok(mapper.Map<ICollection<PostRead>>(repository.GetPosts(parameter)));
         }
 
         // GET api/<PostsController>/5

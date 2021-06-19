@@ -19,9 +19,9 @@ namespace BlogAPI.Repositories
             return FindByCondition(e => e.Id == id).FirstOrDefault();
         }
 
-        public ICollection<EventLog> GetAllEventLogs()
+        public ICollection<EventLog> GetAllEventLogs(QueryParameter parameter)
         {
-            return FindAll()
+            return GetItemsByPage(FindAll(), parameter)
                 .OrderByDescending(e => e.CreatedAt)
                 .ToList();
         }

@@ -37,14 +37,14 @@ namespace BlogAPI.Repositories
             return postRepository.GetPostById(id);
         }
 
-        public ICollection<Post> GetPosts()
+        public ICollection<Post> GetPosts(QueryParameter parameter)
         {
-            return postRepository.GetAllPosts();
+            return postRepository.GetAllPosts(parameter);
         }
 
-        public ICollection<Title> GetTitles()
+        public ICollection<Title> GetTitles(QueryParameter parameter)
         {
-            return postRepository.GetAllTitles();
+            return postRepository.GetAllTitles(parameter);
         }
 
         public async Task<int> SaveAsync()
