@@ -1,33 +1,7 @@
-<form #titleForm="ngForm" (ngSubmit)="save(titleForm)">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add new
-    post</button>
-  <div class="list-group mt-3">
-    <button type="button" class="list-group-item list-group-item-action" *ngFor="let title of titles"
-      (click)="getPost(title)">
-      {{title.postTitle}}
-    </button>
-  </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create post</h5>          
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="tile" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title" ngModel>
-          </div>
-          <div class="mb-3">
-            <label for="content" class="form-label">Content</label>
-            <textarea class="form-control" id="content" rows="8" name="content" ngModel></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
+<button type="button" class="btn btn-primary" (click)="addPost()">Add new post</button>
+<div class="list-group mt-3">
+  <button type="button" class="list-group-item list-group-item-action" *ngFor="let title of titles"
+    (click)="getPost(title)">
+    {{title.postTitle}}
+  </button>
+</div>

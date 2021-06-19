@@ -30,8 +30,7 @@ export class ShowTitleComponent implements OnInit {
     this.router.navigateByUrl("/posts/" + title.id);
   }
 
-  save(titleForm: NgForm): void {
-    let post: Post = titleForm.value;
-    this.services.addPost(post).subscribe();
+  addPost(): void {
+    this.router.navigateByUrl("/add");
   }
 }
