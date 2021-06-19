@@ -16,7 +16,7 @@ namespace BlogAPI.Entities
         }
 
         private const int _maxPageSize = 50;
-        private int _pageSize = 2;
+        private int _pageSize = 10;
 
         public int PageSize
         {
