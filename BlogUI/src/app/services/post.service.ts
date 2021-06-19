@@ -26,8 +26,8 @@ export class PostService {
     return this.client.post<Post>(this.baseURL, post, );
   }
 
-  updatePost(post: Post): Observable<string> {
-    return this.client.put<string>(this.baseURL, post);
+  updatePost(post: Post, id?: number): Observable<string> {
+    return this.client.put<string>(this.baseURL + id, post);
   }
 
   deletePost(id: number): Observable<string> {

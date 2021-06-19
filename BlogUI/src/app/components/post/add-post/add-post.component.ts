@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/app/entities/post';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
-  selector: 'app-add-edit',
-  templateUrl: './add-edit.component.html',
-  styleUrls: ['./add-edit.component.css']
+  selector: 'app-add-post',
+  templateUrl: './add-post.component.html',
+  styleUrls: ['./add-post.component.css']
 })
-export class AddEditComponent implements OnInit {
+export class AddPostComponent implements OnInit {
+  titleId: number = 0;
   post: Post = {};
 
-  constructor(private router: Router, private services: PostService) { }
+  constructor(private router: Router, 
+    private services: PostService) { 
+
+    }
 
   ngOnInit(): void {
+    
   }
 
   getList(): void {

@@ -24,13 +24,17 @@ export class ShowPostComponent implements OnInit {
     this.getPost(this.titleId);
   }
 
-  getPost(id: number): Subscription {
-    return this.services.getPost(id).subscribe(data => {
+  getPost(id: number): void {
+    this.services.getPost(id).subscribe(data => {
       this.post = data;
    })
   }
 
   getList() {
     this.router.navigateByUrl("/");
+  }
+
+  showEditForm() {
+    this.router.navigateByUrl("/edit/" + this.post.id);
   }
 }

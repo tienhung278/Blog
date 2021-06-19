@@ -2,11 +2,11 @@
     <button type="button" class="btn btn-primary mb-3" (click)="getList()">Back to List</button>
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" name="title" ngModel>
+        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="post.title">
     </div>
     <div class="mb-3">
         <label for="content" class="form-label">Content</label>
-        <textarea class="form-control" id="content" rows="10" name="content" ngModel></textarea>
+        <textarea class="form-control" id="content" rows="10" name="content" [(ngModel)]="post.content"></textarea>
     </div>
     <div>
         <button type="submit" class="btn btn-primary">Save</button>

@@ -8,17 +8,19 @@ import { AppComponent } from './app.component';
 
 import { PostService } from './services/post.service';
 import { PostComponent } from './components/post/post.component';
-import { AddEditComponent } from './components/post/add-edit/add-edit.component';
 import { ShowTitleComponent } from './components/post/show-title/show-title.component';
 import { ShowPostComponent } from './components/post/show-post/show-post.component';
+import { AddPostComponent } from './components/post/add-post/add-post.component';
+import { EditPostComponent } from './components/post/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
-    AddEditComponent,
     ShowTitleComponent,
-    ShowPostComponent
+    ShowPostComponent,
+    AddPostComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,

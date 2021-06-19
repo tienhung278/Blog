@@ -30,7 +30,7 @@ export class ShowTitleComponent implements OnInit {
     this.router.navigateByUrl("/posts/" + title.id);
   }
 
-  addPost(): void {
+  showAddForm(): void {
     this.router.navigateByUrl("/add");
   }
 }
