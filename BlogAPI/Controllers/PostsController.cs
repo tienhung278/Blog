@@ -26,7 +26,7 @@ namespace BlogAPI.Controllers
         }
 
         // GET: api/<PostsController>/titles
-        [HttpGet("/titles")]
+        [HttpGet("titles")]
         public IActionResult GetPostTitles([FromQuery] QueryParameter parameter)
         {
             return Ok(repository.GetTitles(parameter));
