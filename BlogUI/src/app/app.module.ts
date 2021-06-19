@@ -7,10 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PostService } from './services/post.service';
+import { PostComponent } from './components/post/post.component';
+import { ShowDeleteComponent } from './components/post/show-delete/show-delete.component';
+import { AddEditComponent } from './components/post/add-edit/add-edit.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostComponent,
+    ShowDeleteComponent,
+    AddEditComponent
   ],
   imports: [
     BrowserModule,
