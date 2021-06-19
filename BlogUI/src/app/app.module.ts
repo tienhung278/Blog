@@ -8,15 +8,17 @@ import { AppComponent } from './app.component';
 
 import { PostService } from './services/post.service';
 import { PostComponent } from './components/post/post.component';
-import { ShowDeleteComponent } from './components/post/show-delete/show-delete.component';
 import { AddEditComponent } from './components/post/add-edit/add-edit.component';
+import { ShowTitleComponent } from './components/post/show-title/show-title.component';
+import { ShowPostComponent } from './components/post/show-post/show-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
-    ShowDeleteComponent,
-    AddEditComponent
+    AddEditComponent,
+    ShowTitleComponent,
+    ShowPostComponent
   ],
   imports: [
     BrowserModule,

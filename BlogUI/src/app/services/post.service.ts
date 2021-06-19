@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../entities/post';
+import { Title } from '../entities/title';
 
 @Injectable({
   providedIn: 'root'
@@ -13,23 +14,23 @@ export class PostService {
     
   }
 
-  getPostTitles(): Observable<HttpResponse<Post[]>> {
-    return this.client.get<HttpResponse<Post[]>>(this.baseURL + 'titles');
+  getPostTitles(): Observable<Title[]> {
+    return this.client.get<Title[]>(this.baseURL + 'titles');
   }
 
-  getPost(id: number): Observable<HttpResponse<Post>> {
-    return this.client.get<HttpResponse<Post>>(this.baseURL + id);
+  getPost(id: number): Observable<Post> {
+    return this.client.get<Post>(this.baseURL + id);
   }
 
-  addPost(post: Post): Observable<HttpResponse<Post>> {
-    return this.client.post<HttpResponse<Post>>(this.baseURL, post, );
+  addPost(post: Post): Observable<Post> {
+    return this.client.post<Post>(this.baseURL, post, );
   }
 
-  updatePost(post: Post): Observable<HttpResponse<string>> {
-    return this.client.put<HttpResponse<string>>(this.baseURL, post);
+  updatePost(post: Post): Observable<string> {
+    return this.client.put<string>(this.baseURL, post);
   }
 
-  deletePost(id: number): Observable<HttpResponse<string>> {
-    return this.client.delete<HttpResponse<string>>(this.baseURL + id);
+  deletePost(id: number): Observable<string> {
+    return this.client.delete<string>(this.baseURL + id);
   }
 }
