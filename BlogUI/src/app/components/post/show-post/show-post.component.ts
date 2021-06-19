@@ -37,4 +37,10 @@ export class ShowPostComponent implements OnInit {
   showEditForm() {
     this.router.navigateByUrl("/edit/" + this.post.id);
   }
+
+  deletePost() {
+    this.services.deletePost(this.titleId).subscribe(() => {
+      this.getList();
+    });
+  }
 }
