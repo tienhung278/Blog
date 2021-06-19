@@ -19,18 +19,18 @@ namespace BlogAPI.Repositories
             return FindByCondition(p => p.Id == id).FirstOrDefault();
         }
 
-        public ICollection<Post> GetPostsAll()
+        public ICollection<Post> GetAllPosts()
         {
             return FindAll()
                 .OrderByDescending(o => o.CreatedAt)
                 .ToList();
         }
 
-        public ICollection<string> GetPostTitlesAll()
+        public ICollection<Title> GetAllTitles()
         {
             return FindAll()
                 .OrderBy(p => p.Title)
-                .Select(p => p.Title)
+                .Select(p => new Title { Id = p.Id, PostTitle = p.Title })
                 .ToList();
         }
     }

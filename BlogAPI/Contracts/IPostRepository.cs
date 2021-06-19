@@ -8,8 +8,8 @@ namespace BlogAPI.Contracts
 {
     public interface IPostRepository : IRepositoryBase<Post>
     {
-        ICollection<Post> GetPostsAll();
+        ICollection<Post> GetAllPosts();
         Post GetPostById(int id);
-        ICollection<string> GetPostTitlesAll();
+        ICollection<Title> GetAllTitles();
     }
 }

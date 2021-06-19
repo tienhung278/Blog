@@ -29,7 +29,7 @@ namespace BlogAPI.Controllers
         [HttpGet("/titles")]
         public IActionResult GetPostTitles()
         {
-            return Ok(mapper.Map<ICollection<string>>(repository.GetPostTitles()));
+            return Ok(repository.GetTitles());
         }
 
         // GET: api/<PostsController>

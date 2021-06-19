@@ -39,12 +39,12 @@ namespace BlogAPI.Repositories
 
         public ICollection<Post> GetPosts()
         {
-            return postRepository.GetPostsAll();
+            return postRepository.GetAllPosts();
         }
 
-        public ICollection<string> GetPostTitles()
+        public ICollection<Title> GetTitles()
         {
-            return postRepository.GetPostTitlesAll();
+            return postRepository.GetAllTitles();
         }
 
         public async Task<int> SaveAsync()
