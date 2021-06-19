@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShowDeleteComponent } from './show-delete.component';
+import { ShowPostComponent } from './show-post.component';
 
-describe('ShowDeleteComponent', () => {
-  let component: ShowDeleteComponent;
-  let fixture: ComponentFixture<ShowDeleteComponent>;
+describe('ShowPostComponent', () => {
+  let component: ShowPostComponent;
+  let fixture: ComponentFixture<ShowPostComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowDeleteComponent ]
+      declarations: [ ShowPostComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShowDeleteComponent);
+    fixture = TestBed.createComponent(ShowPostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
