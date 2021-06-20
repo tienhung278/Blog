@@ -3,6 +3,7 @@ using BlogAPI.Contracts;
 using BlogAPI.DTOs;
 using BlogAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,9 @@ namespace BlogAPI.Controllers
         [HttpGet("titles")]
         public IActionResult GetPostTitles([FromQuery] QueryParameter parameter)
         {
+            var titles = repository.GetTitles(parameter);
+            var pageInfo = repository.GetPageInfo(parameter);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(pageInfo));
             return Ok(repository.GetTitles(parameter));
         }
 

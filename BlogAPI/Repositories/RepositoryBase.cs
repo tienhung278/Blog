@@ -46,6 +46,12 @@ namespace BlogAPI.Repositories
                 .Take(parameter.PageSize);
         }
 
+        public PageInfo<T> GetPageInfo(QueryParameter parameter)
+        {
+            var totalCount = FindAll().Count();
+            return new PageInfo<T>(totalCount, parameter.PageNumber, parameter.PageSize);
+        }
+
         public void Update(T entity)
         {
             context.Entry(entity).State = EntityState.Modified;

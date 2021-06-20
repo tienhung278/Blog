@@ -32,6 +32,11 @@ namespace BlogAPI.Repositories
             await AddEventLogAsync(EventType.Deleted, userId, post);
         }
 
+        public PageInfo<Post> GetPageInfo(QueryParameter parameter)
+        {
+            return postRepository.GetPageInfo(parameter);
+        }
+
         public Post GetPost(int id)
         {
             return postRepository.GetPostById(id);
