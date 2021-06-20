@@ -4,6 +4,7 @@ using BlogAPI.DTOs;
 using BlogAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,9 +31,14 @@ namespace BlogAPI.Controllers
         [HttpGet("titles")]
         public IActionResult GetPostTitles([FromQuery] QueryParameter parameter)
         {
+            //Json to camel case
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
             var titles = repository.GetTitles(parameter);
             var pageInfo = repository.GetPageInfo(parameter);
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(pageInfo));
+            Response.Headers.Add("access-control-expose-headers", "X-Pagination");            
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(pageInfo, settings));
             return Ok(repository.GetTitles(parameter));
         }
 
