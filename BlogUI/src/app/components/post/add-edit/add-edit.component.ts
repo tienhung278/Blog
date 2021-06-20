@@ -63,8 +63,8 @@ export class AddEditComponent implements OnInit {
   getPost(id: number): void {
     this.services.getPost(id).subscribe(
       data => this.form.setValue({
-        title: data.title,
-        content: data.content
+        title: data.body!.title,
+        content: data.body!.content
       }),
       error => this.errorMsg = error.statusText
    );

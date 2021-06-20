@@ -25,19 +25,19 @@ export class PostService {
     return this.client.get<Title[]>(this.baseURL + "titles", { observe: "response" })
   }
 
-  getPost(id: number): Observable<Post> {
-    return this.client.get<Post>(this.baseURL + id)
+  getPost(id: number): Observable<HttpResponse<Post>> {
+    return this.client.get<Post>(this.baseURL + id, { observe: "response" })
   }
 
-  addPost(post: Post): Observable<Post> {
-    return this.client.post<Post>(this.baseURL, post, )
+  addPost(post: Post): Observable<HttpResponse<Post>> {
+    return this.client.post<Post>(this.baseURL, post, { observe: "response" })
   }
 
-  updatePost(post: Post, id?: number): Observable<string> {
-    return this.client.put<string>(this.baseURL + id, post)
+  updatePost(post: Post, id?: number): Observable<HttpResponse<string>> {
+    return this.client.put<string>(this.baseURL + id, post, { observe: "response" })
   }
 
-  deletePost(id: number): Observable<string> {
-    return this.client.delete<string>(this.baseURL + id)
+  deletePost(id: number): Observable<HttpResponse<string>> {
+    return this.client.delete<string>(this.baseURL + id, { observe: "response" })
   }
 }

@@ -32,7 +32,7 @@ export class ShowPostComponent implements OnInit {
 
   getPost(id: number): void {
     this.services.getPost(id).subscribe(
-      data => this.post = data,
+      data => this.post = data.body!,
       error => this.errorMsg = error.statusText
    )
   }

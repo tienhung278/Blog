@@ -15,10 +15,12 @@ import { PostService } from 'src/app/services/post.service';
 export class ShowTitleComponent implements OnInit {
   titles: Title[] | null;
   pageInfo: PageInfo;
+  errorMsg: string;
 
   constructor(private services: PostService, private router: Router) {
     this.titles = null;
     this.pageInfo = {};
+    this.errorMsg = "";
    }
 
   ngOnInit(): void {
@@ -30,7 +32,8 @@ export class ShowTitleComponent implements OnInit {
       data => {
         this.titles = data.body;
         this.pageInfo = JSON.parse(data.headers.get("X-Pagination")!);
-      }     
+      },
+      error => this.errorMsg = error.statusText     
     )
   }
 
