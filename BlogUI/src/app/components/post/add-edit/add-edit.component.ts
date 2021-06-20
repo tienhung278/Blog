@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/entities/post';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
-  selector: 'app-edit-post',
-  templateUrl: './edit-post.component.html',
-  styleUrls: ['./edit-post.component.css']
+  selector: 'app-add-edit',
+  templateUrl: './add-edit.component.html',
+  styleUrls: ['./add-edit.component.css']
 })
-export class EditPostComponent implements OnInit {
+export class AddEditComponent implements OnInit {
   titleId: number;
   post: Post;
   form: FormGroup;
@@ -22,21 +22,23 @@ export class EditPostComponent implements OnInit {
     return this.form.get('content')!;
   }
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
+    private route: ActivatedRoute, 
     private services: PostService,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder) { 
+    private formBuilder: FormBuilder) {
       this.titleId = 0;
       this.post = {}; 
       this.form = this.formBuilder.group({
         title: ['', Validators.required],
         content: ['', Validators.required]
       })
-    }    
-
+    }
+    
   ngOnInit(): void {
     this.titleId = Number(this.route.snapshot.paramMap.get('id'));
-    this.getPost(this.titleId);
+    if (this.titleId > 0) {
+      this.getPost(this.titleId);
+    }
   }
 
   getList(): void {
@@ -45,9 +47,15 @@ export class EditPostComponent implements OnInit {
 
   save(): void {
     this.post = this.form.value;
-    this.services.updatePost(this.post, this.titleId).subscribe(() => {
-      this.getList();
-    });    
+    if (this.titleId === 0) {
+      this.services.addPost(this.post).subscribe(() => {
+        this.getList();
+      });
+    } else {
+      this.services.updatePost(this.post, this.titleId).subscribe(() => {
+        this.getList();
+      });
+    }   
   }
 
   getPost(id: number): void {
@@ -58,5 +66,4 @@ export class EditPostComponent implements OnInit {
       })
    });
   }
-
 }

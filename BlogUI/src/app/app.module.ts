@@ -10,9 +10,8 @@ import { PostService } from './services/post.service';
 import { PostComponent } from './components/post/post.component';
 import { ShowTitleComponent } from './components/post/show-title/show-title.component';
 import { ShowPostComponent } from './components/post/show-post/show-post.component';
-import { AddPostComponent } from './components/post/add-post/add-post.component';
-import { EditPostComponent } from './components/post/edit-post/edit-post.component';
 import { HighlightsearchPipe } from './pipes/highlightsearch.pipe';
+import { AddEditComponent } from './components/post/add-edit/add-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +19,8 @@ import { HighlightsearchPipe } from './pipes/highlightsearch.pipe';
     PostComponent,
     ShowTitleComponent,
     ShowPostComponent,
-    AddPostComponent,
-    EditPostComponent,
-    HighlightsearchPipe
+    HighlightsearchPipe,
+    AddEditComponent
   ],
   imports: [
     BrowserModule,
