@@ -26,6 +26,7 @@ namespace BlogAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureJwtAuth(Configuration);
             services.ConfigureCors();
             services.ConfigureAutoMapper();
             services.ConfigureRepository();
@@ -46,15 +47,11 @@ namespace BlogAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BlogAPI v1"));
             }
-
             app.UseRouting();
-
             app.UseCors("CorsPolicy");
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseExceptionMiddleware();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

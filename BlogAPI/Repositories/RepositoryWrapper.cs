@@ -32,6 +32,11 @@ namespace BlogAPI.Repositories
             await AddEventLogAsync(EventType.Deleted, userId, post);
         }
 
+        public ICollection<EventLog> GetEventLogs(QueryParameter parameter)
+        {
+            return eventLogRepository.GetAllEventLogs(parameter);
+        }
+
         public PageInfo<Post> GetPageInfo(QueryParameter parameter)
         {
             return postRepository.GetPageInfo(parameter);

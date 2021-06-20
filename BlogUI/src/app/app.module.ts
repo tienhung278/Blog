@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,13 @@ import { ShowTitleComponent } from './components/post/show-title/show-title.comp
 import { ShowPostComponent } from './components/post/show-post/show-post.component';
 import { HighlightsearchPipe } from './pipes/highlightsearch.pipe';
 import { AddEditComponent } from './components/post/add-edit/add-edit.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AdminComponent } from './components/auth/admin/admin.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { EventlogService } from './services/eventlog.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,10 @@ import { AddEditComponent } from './components/post/add-edit/add-edit.component'
     ShowTitleComponent,
     ShowPostComponent,
     HighlightsearchPipe,
-    AddEditComponent
+    AddEditComponent,
+    AuthComponent,
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +39,17 @@ import { AddEditComponent } from './components/post/add-edit/add-edit.component'
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [PostService],
+  providers: [
+    PostService,
+    AuthGuardService, 
+    EventlogService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

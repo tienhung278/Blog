@@ -12,7 +12,7 @@ export class PostService {
 
   constructor(private client: HttpClient) { 
     
-  }
+  }  
 
   getPostTitles(pageNumber?: number): Observable<HttpResponse<Title[]>> {
     if (pageNumber != undefined) {

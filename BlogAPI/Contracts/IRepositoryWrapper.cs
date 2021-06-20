@@ -8,6 +8,7 @@ namespace BlogAPI.Contracts
 {
     public interface IRepositoryWrapper
     {
+        ICollection<EventLog> GetEventLogs(QueryParameter parameter);
         ICollection<Post> GetPosts(QueryParameter parameter);
         ICollection<Title> GetTitles(QueryParameter parameter);
         Post GetPost(int id);

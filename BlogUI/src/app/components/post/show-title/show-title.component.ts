@@ -45,6 +45,10 @@ export class ShowTitleComponent implements OnInit {
     this.router.navigateByUrl("/add");
   }
 
+  showLogForm(): void {
+    this.router.navigateByUrl("/admin");
+  }
+
   nextPage(): void {
     let pageNumber = this.pageInfo.currentPage! + 1;
     this.services.getPostTitles(pageNumber).subscribe(
