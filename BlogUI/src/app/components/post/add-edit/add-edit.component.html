@@ -1,5 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="save()">
     <button type="button" class="btn btn-primary mb-3" (click)="getList()">Back to List</button>
+    <div class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</div>
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input type="text" class="form-control" [class.is-invalid]="title.invalid && title.touched" id="title" formControlName="title">

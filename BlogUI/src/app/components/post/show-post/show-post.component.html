@@ -1,4 +1,5 @@
 <button type="button" class="btn btn-primary" (click)="getList()">Back to List</button>
+<div class="alert alert-danger" *ngIf="errorMsg">{{errorMsg}}</div>
 <div class="m-3">
   <label for="search" class="form-label">Search Text</label>
   <input type="text" class="form-control" id="search" [(ngModel)]="searchText">

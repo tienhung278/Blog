@@ -13,6 +13,7 @@ export class AddEditComponent implements OnInit {
   titleId: number;
   post: Post;
   form: FormGroup;
+  errorMsg: string;
 
   get title(){
     return this.form.get('title')!;
@@ -31,7 +32,8 @@ export class AddEditComponent implements OnInit {
       this.form = this.formBuilder.group({
         title: ['', Validators.required],
         content: ['', Validators.required]
-      })
+      });
+      this.errorMsg = "";
     }
     
   ngOnInit(): void {
@@ -59,11 +61,12 @@ export class AddEditComponent implements OnInit {
   }
 
   getPost(id: number): void {
-    this.services.getPost(id).subscribe(data => {
-      this.form.setValue({
+    this.services.getPost(id).subscribe(
+      data => this.form.setValue({
         title: data.title,
         content: data.content
-      })
-   });
+      }),
+      error => this.errorMsg = error.statusText
+   );
   }
 }

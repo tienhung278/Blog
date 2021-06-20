@@ -11,13 +11,18 @@ import { PostComponent } from '../post.component';
   styleUrls: ['./show-post.component.css']
 })
 export class ShowPostComponent implements OnInit {
-  post: Post = {};
-  titleId: number = 0;
-  searchText: string = "";
+  post: Post;
+  titleId: number;
+  searchText: string;
+  errorMsg: string;
 
   constructor(private route: ActivatedRoute,
      private services: PostService,
      private router: Router) {
+       this.post = {};
+       this.titleId = 0;
+       this.searchText = "";
+       this.errorMsg = "";
   }
 
   ngOnInit(): void {
@@ -26,9 +31,10 @@ export class ShowPostComponent implements OnInit {
   }
 
   getPost(id: number): void {
-    this.services.getPost(id).subscribe(data => {
-      this.post = data;
-   })
+    this.services.getPost(id).subscribe(
+      data => this.post = data,
+      error => this.errorMsg = error.statusText
+   )
   }
 
   getList(): void {

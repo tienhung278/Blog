@@ -14,16 +14,17 @@ import { PostService } from 'src/app/services/post.service';
 export class ShowTitleComponent implements OnInit {
   titles: Title[] = [];
 
-  constructor(private services: PostService, private router: Router) { }
+  constructor(private services: PostService, private router: Router) {
+   }
 
   ngOnInit(): void {
     this.getTitles();
   }
 
   getTitles(): void {
-    this.services.getPostTitles().subscribe(data => {
-       this.titles = data;
-    })
+    this.services.getPostTitles().subscribe(
+      data => this.titles = data     
+    )
   }
 
   getPost(title: Title): void {
