@@ -1,0 +1,21 @@
+<div class="alert alert-danger my-3" *ngIf="errMsg">{{errMsg}}</div>
+<table class="table my-3">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let title of titles">
+            <th>{{title.id}}</th>
+            <td>{{title.postTitle}}</td>
+            <td>
+                <button class="btn btn-outline-info me-3" type="button" routerLink="/post/details/{{title.id}}">Details</button>
+                <button class="btn btn-outline-primary me-3" type="button">Update</button>
+                <button class="btn btn-outline-danger" type="button">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

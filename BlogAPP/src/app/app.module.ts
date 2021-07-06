@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-
-
+import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './error-pages/not-found/not-found.component';
+import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    HomeComponent,
+    NotFoundComponent,
+    InternalServerComponent
   ],
   imports: [
     BrowserModule,

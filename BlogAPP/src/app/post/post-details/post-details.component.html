@@ -1,0 +1,9 @@
+<div class="alert alert-danger my-3" *ngIf="errMsg">{{errMsg}}</div>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{post?.title}}</h5>
+        <p class="card-text">{{post?.content}}</p>
+        <p class="card-text">{{post?.createdAt}}</p>
+        <p class="card-text">{{post?.createdBy}}</p>
+    </div>
+</div>
