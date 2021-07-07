@@ -1,0 +1,25 @@
+<form [formGroup]="postForm" (ngSubmit)="save()">
+    <div class="card mt-3">
+        <div class="card-header">
+            Create New Post
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" rows="5"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="createAt" class="form-label">Create at</label>
+                <input type="text" class="form-control" id="createAt" appDatepicker>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-outline-primary me-3">Save</button>
+            <button class="btn btn-outline-secondary" routerLink="/post/list" type="button">Cancel</button>
+        </div>
+    </div>
+</form>
