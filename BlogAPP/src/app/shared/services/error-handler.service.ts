@@ -22,6 +22,7 @@ export class ErrorHandlerService {
         break;
       default:
         this.createErrorMessage(err.statusText);
+        $("#errorModal").show()
         break;
     }
   }

@@ -6,20 +6,25 @@
         <div class="card-body">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title">
+                <input type="text" class="form-control" id="title" formControlName="title" [class.is-invalid]="formErrors.title">
+                <div class="invalid-feedback">{{formErrors.title}}</div>
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea class="form-control" id="content" rows="5"></textarea>
+                <textarea class="form-control" id="content" rows="5" formControlName="content" [class.is-invalid]="formErrors.content"></textarea>
+                <div class="invalid-feedback">{{formErrors.content}}</div>
             </div>
             <div class="mb-3">
                 <label for="createAt" class="form-label">Create at</label>
-                <input type="text" class="form-control" id="createAt" appDatepicker>
+                <input type="text" class="form-control" id="createAt" appDatepicker formControlName="createdAt" [class.is-invalid]="formErrors.createdAt" (change)="setDate($event)" readonly>
+                <div class="invalid-feedback">{{formErrors.createdAt}}</div>
             </div>
         </div>
         <div class="card-footer">
-            <button class="btn btn-outline-primary me-3">Save</button>
+            <button class="btn btn-outline-primary me-3" [disabled]="postForm.invalid">Save</button>
             <button class="btn btn-outline-secondary" routerLink="/post/list" type="button">Cancel</button>
         </div>
     </div>
 </form>
+<app-success-modal [modalTitle]="'Success message'" [modalBody]="'Created successfully'" (redirectOnOk)="redirect()"></app-success-modal>
+<app-error-modal  [modalTitle]="'Error message'" [modalBody]="errorMessage"></app-error-modal>
